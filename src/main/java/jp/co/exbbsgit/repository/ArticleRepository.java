@@ -37,7 +37,6 @@ public class ArticleRepository {
 		return comment;
 	}
 
-	// TODO: 演習6 で使うクラス
 	private final static ResultSetExtractor<List<Article>> ARTICLE_SET_EXTRACTOR = (rs) -> {
 		List<Article> articleList = new ArrayList<>();
 		List<Comment> commentList = null;
