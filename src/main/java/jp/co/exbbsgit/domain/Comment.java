@@ -1,24 +1,20 @@
 package jp.co.exbbsgit.domain;
 
-import java.util.List;
-
-
-
 /**
- * 掲示板への投稿情報を格納するドメイン.
+ * コメント情報を格納するドメイン.
  * 
  * @author daiki.takayama
  *
  */
-public class Article {
-	/** 投稿ID */
+public class Comment {
+	/** コメントID */
 	private Integer id;
-	/** 投稿者名 */
+	/** コメント者名 */
 	private String name;
 	/** コンテント */
 	private String content;
-	/** 投稿に対して送られたコメントのリスト */
-	private List<Comment> commentList;
+	/** 投稿ID の外部キー */
+	private Integer articleId;
 
 	public Integer getId() {
 		return id;
@@ -44,16 +40,16 @@ public class Article {
 		this.content = content;
 	}
 
-	public List<Comment> getCommentList() {
-		return commentList;
+	public Integer getArticleId() {
+		return articleId;
 	}
 
-	public void setCommentList(List<Comment> commentList) {
-		this.commentList = commentList;
+	public void setArticleId(Integer articleId) {
+		this.articleId = articleId;
 	}
 
 	@Override
 	public String toString() {
-		return "Article [id=" + id + ", name=" + name + ", content=" + content + ", commentList=" + commentList + "]";
+		return "Comment [id=" + id + ", name=" + name + ", content=" + content + ", articleId=" + articleId + "]";
 	}
 }
