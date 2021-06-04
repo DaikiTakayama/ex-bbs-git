@@ -1,9 +1,9 @@
 package jp.co.exbbsgit.form;
 
 public class CommentForm {
-	private String articleId;
 	private String name;
 	private String content;
+	private String articleId;
 
 	public String getArticleId() {
 		return articleId;
@@ -27,6 +27,11 @@ public class CommentForm {
 
 	public void setContent(String content) {
 		this.content = content;
+	}
+
+	@Override
+	public String toString() {
+		return "CommentForm [articleId=" + articleId + ", name=" + name + ", content=" + content + "]";
 	}
 
 }

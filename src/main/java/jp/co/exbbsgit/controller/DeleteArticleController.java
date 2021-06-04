@@ -18,6 +18,6 @@ public class DeleteArticleController {
 	@RequestMapping("/delete")
 	public String delete(int articleId) {
 		articleRepository.deleteById(articleId);
-		return "redirect:/ex-bbs-git";
+		return "redirect:/ex-bbs-git/index";
 	}
 }

@@ -41,6 +41,7 @@ public class ShowBbsController {
 	public String index(Model model) {
 		List<Article> articleList = articleRepository.findAll();
 		model.addAttribute("articleList", articleList);
+		articleList.forEach(System.out::println);
 		return "index-bbs";
 	}
 }

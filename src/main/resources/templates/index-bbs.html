@@ -7,12 +7,12 @@
 </head>
 <body>
 	<!-- 記事投稿用フォーム -->
-    <form th:action="@{/ex-bbs-git/insert}" method="post" th:object="${articleForm}">
+    <form th:action="@{/ex-bbs-git/insert}" method="post">
         <label for="posterName">投稿者名:</label>
-        <input type="text" name="name" id="posterName" th:field="*{name}">
+        <input type="text" name="name" id="posterName">
         <br>
         <label for="posterContent">投稿内容:</label>
-        <textarea name="content" id="posterContent" cols="30" rows="10" th:field="*{content}"></textarea>
+        <textarea name="content" id="posterContent" cols="30" rows="10"></textarea>
         <button>記事投稿</button>
     </form>
     
