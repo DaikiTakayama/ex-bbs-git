@@ -22,15 +22,14 @@ public class ShowBbsController {
 	private ArticleForm setUpArticleForm() {
 		return new ArticleForm();
 	}
-	
+
 	@ModelAttribute
 	private CommentForm setUpCommentForm() {
 		return new CommentForm();
 	}
-	
+
 	@Autowired
 	private ArticleRepository articleRepository;
-
 
 	/**
 	 * 書き込み内容とコメントを出力.
@@ -41,8 +40,8 @@ public class ShowBbsController {
 	@RequestMapping("/index")
 	public String index(Model model) {
 		List<Article> articleList = articleRepository.findAll();
-		model.addAttribute("articleList",articleList);
+		model.addAttribute("articleList", articleList);
+		articleList.forEach(System.out::println);
 		return "index-bbs";
-		
 	}
 }

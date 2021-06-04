@@ -13,7 +13,7 @@ import jp.co.exbbsgit.form.CommentForm;
 import jp.co.exbbsgit.repository.CommentRepository;
 
 /**
- * コメントを投稿するコントローラ 
+ * コメントを投稿するコントローラ
  * 
  * @author daiki.takayama
  *
@@ -22,16 +22,15 @@ import jp.co.exbbsgit.repository.CommentRepository;
 @RequestMapping("/ex-bbs-git")
 @Transactional
 public class InsertCommentController {
-	
 
 	@ModelAttribute
 	private CommentForm setUpCommentForm() {
 		return new CommentForm();
 	}
-	
+
 	@Autowired
 	private CommentRepository commentRepository;
-	
+
 	/**
 	 * コメントを追加登録する処理を実行する.
 	 * 
@@ -43,14 +42,10 @@ public class InsertCommentController {
 	 * @return 掲示板画面を表示
 	 */
 	@RequestMapping("/insertComment")
-	public String insertComment(CommentForm commentForm,Model model) {
-
-		System.out.println(commentForm.getName());
-		
+	public String insertComment(CommentForm commentForm, Model model) {
 		Comment comment = new Comment();
 		BeanUtils.copyProperties(commentForm, comment);
-//		System.out.println(comment.getArticleId());
-
+		comment.setArticleId(Integer.parseInt(commentForm.getArticleId()));
 		commentRepository.insert(comment);
 		return "redirect:/ex-bbs-git/index";
 	}

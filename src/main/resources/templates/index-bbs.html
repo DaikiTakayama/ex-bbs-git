@@ -3,8 +3,47 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet"/>
 </head>
 <body>
-
+	<!-- 記事投稿用フォーム -->
+    <form th:action="@{/ex-bbs-git/insert}" method="post">
+        <label for="posterName">投稿者名:</label>
+        <input type="text" name="name" id="posterName">
+        <br>
+        <label for="posterContent">投稿内容:</label>
+        <textarea name="content" id="posterContent" cols="30" rows="10"></textarea>
+        <button>記事投稿</button>
+    </form>
+    
+    <!-- 記事一覧表示 -->
+    <div th:each="article : ${articleList}">
+        <hr>
+        <!-- 投稿記事 -->
+        <p>投稿者名: <span th:text="${article.name}"></span></p>
+        <p>投稿内容:</p>
+        <pre><span th:text="${article.content}"></span></pre>
+        <!-- 記事削除用フォーム -->
+        <form th:action="@{/ex-bbs-git/delete}">
+            <input type="hidden" name="articleId" th:id="${article.id}" th:value="${article.id}">
+            <button>記事削除</button>
+        </form>
+        
+        <!-- 投稿コメント -->
+        <div th:each="comment : ${article.commentList}">
+            <p>コメント者名: <span th:text="${comment.name}"></span></p>
+            <p>コメント内容:</p>
+            <pre><span th:text="${comment.content}"></span></pre>
+        </div>
+        <!-- コメント投稿用フォーム -->
+        <form th:action="@{/ex-bbs-git/insertComment}" method="post" th:object="${commentForm}">
+            <label for="commentName">名前:</label><br>
+            <input type="text" name="name" id="commentName" th:field="*{name}"><br>
+            <label for="commentContent">コメント:</label><br>
+            <textarea name="content" id="commentContent" cols="30" rows="10" th:field="*{content}"></textarea>
+            <input type="hidden" name="articleId" th:id="${article.id}" th:value="${article.id}">
+            <button>コメント投稿</button>
+        </form>
+    </div>
 </body>
 </html>
