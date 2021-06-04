@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,10 +13,10 @@ import jp.co.exbbsgit.domain.Article;
 import jp.co.exbbsgit.form.ArticleForm;
 import jp.co.exbbsgit.form.CommentForm;
 import jp.co.exbbsgit.repository.ArticleRepository;
-import jp.co.exbbsgit.repository.CommentRepository;
 
 @Controller
 @RequestMapping("ex-bbs-git")
+@Transactional
 public class ShowBbsController {
 	@Autowired
 	private ArticleForm setUpArticleForm() {
