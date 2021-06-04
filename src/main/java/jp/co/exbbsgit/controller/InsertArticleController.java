@@ -16,9 +16,10 @@ public class InsertArticleController {
 	private ArticleRepository articleRepository;
 
 	@RequestMapping("/insert")
-	public void insert(ArticleForm articleForm) {
+	public String insert(ArticleForm articleForm) {
 		Article article = new Article();
 		BeanUtils.copyProperties(articleForm, article);
 		articleRepository.insert(article);
+		return "redirect:/ex-bbs-git/index";
 	}
 }
