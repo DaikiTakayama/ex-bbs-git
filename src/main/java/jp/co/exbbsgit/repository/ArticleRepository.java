@@ -6,9 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.ResultSetExtractor;
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -26,7 +24,6 @@ import jp.co.exbbsgit.domain.Comment;
  */
 @Repository
 public class ArticleRepository {
-	private static final RowMapper<Article> ARTICLE_ROW_MAPPER = new BeanPropertyRowMapper<>(Article.class);
 	private final static String ARTICLE_TABLE_NAME = "articles";
 	private final static String COMMENT_TABLE_NAME = "comments";
 	private static String TABLE_NAME = "articles";
